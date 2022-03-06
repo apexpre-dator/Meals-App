@@ -22,7 +22,7 @@ class _TabScreenState extends State<TabScreen> {
   void initState() {
     pages = [
       {
-        'page': CategoriesScreen(),
+        'page': const CategoriesScreen(),
         'title': 'Categories',
       },
       {
@@ -45,7 +45,7 @@ class _TabScreenState extends State<TabScreen> {
       appBar: AppBar(
         title: Text(pages[selectedPage]['title'] as String),
       ),
-      drawer: MainDrawer(),
+      drawer: const MainDrawer(),
       body: pages[selectedPage]['page'] as Widget,
       bottomNavigationBar: BottomNavigationBar(
         onTap: selectPage,
@@ -57,12 +57,12 @@ class _TabScreenState extends State<TabScreen> {
         items: [
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
-            icon: Icon(Icons.category_sharp),
+            icon: const Icon(Icons.category_sharp),
             label: 'Categories',
           ),
           BottomNavigationBarItem(
             backgroundColor: Theme.of(context).primaryColor,
-            icon: Icon(Icons.star_rate_rounded),
+            icon: const Icon(Icons.star_rate_rounded),
             label: 'Favourites',
           ),
         ],

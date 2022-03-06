@@ -33,7 +33,7 @@ class _FilterScreenState extends State<FilterScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Your filters'),
+        title: const Text('Your filters'),
         actions: <Widget>[
           IconButton(
             onPressed: () {
@@ -44,15 +44,15 @@ class _FilterScreenState extends State<FilterScreen> {
                 'lactose': lactoseFree,
               });
             },
-            icon: Icon(Icons.save),
+            icon: const Icon(Icons.save),
           ),
         ],
       ),
-      drawer: MainDrawer(),
+      drawer: const MainDrawer(),
       body: Column(
         children: <Widget>[
           Container(
-            padding: EdgeInsets.all(20),
+            padding: const EdgeInsets.all(20),
             child: Text(
               'Adjust your meal selection',
               style: Theme.of(context).textTheme.headline6,
@@ -62,9 +62,9 @@ class _FilterScreenState extends State<FilterScreen> {
             child: ListView(
               children: <Widget>[
                 SwitchListTile(
-                  title: Text('Gluten-free'),
+                  title: const Text('Gluten-free'),
                   value: glutenFree,
-                  subtitle: Text('Only include Gluten-free food'),
+                  subtitle: const Text('Only include Gluten-free food'),
                   onChanged: (newVal) {
                     setState(() {
                       glutenFree = newVal;
@@ -72,9 +72,9 @@ class _FilterScreenState extends State<FilterScreen> {
                   },
                 ),
                 SwitchListTile(
-                  title: Text('Vegetarian'),
+                  title: const Text('Vegetarian'),
                   value: vegetarian,
-                  subtitle: Text('Only include Vegetarian food'),
+                  subtitle: const Text('Only include Vegetarian food'),
                   onChanged: (newVal) {
                     setState(() {
                       vegetarian = newVal;
@@ -82,9 +82,9 @@ class _FilterScreenState extends State<FilterScreen> {
                   },
                 ),
                 SwitchListTile(
-                  title: Text('Vegan'),
+                  title: const Text('Vegan'),
                   value: vegan,
-                  subtitle: Text('Only include Vegan food'),
+                  subtitle: const Text('Only include Vegan food'),
                   onChanged: (newVal) {
                     setState(() {
                       vegan = newVal;
@@ -92,9 +92,9 @@ class _FilterScreenState extends State<FilterScreen> {
                   },
                 ),
                 SwitchListTile(
-                  title: Text('Lactose-free'),
+                  title: const Text('Lactose-free'),
                   value: lactoseFree,
-                  subtitle: Text('Only include Lactose-free food'),
+                  subtitle: const Text('Only include Lactose-free food'),
                   onChanged: (newVal) {
                     setState(() {
                       lactoseFree = newVal;
