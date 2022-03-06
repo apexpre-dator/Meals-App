@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meals_app/screens/favourites_screen.dart';
 
+import './favourites_screen.dart';
 import './categories_screen.dart';
 
 class TabScreen extends StatefulWidget {
@@ -11,33 +11,50 @@ class TabScreen extends StatefulWidget {
 }
 
 class _TabScreenState extends State<TabScreen> {
+  final List<Map<String, Object>> pages = [
+    {
+      'page': CategoriesScreen(),
+      'title': 'Categories',
+    },
+    {
+      'page': FavouritesScreen(),
+      'title': 'Favourites',
+    },
+  ];
+  int selectedPage = 0;
+
+  void selectPage(int index) {
+    setState(() {
+      selectedPage = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 2,
-      initialIndex: 0,
-      child: Scaffold(
-        appBar: AppBar(
-          title: Text('Meal'),
-          bottom: TabBar(
-            tabs: <Widget>[
-              Tab(
-                icon: Icon(Icons.category_sharp),
-                text: 'Categories',
-              ),
-              Tab(
-                icon: Icon(Icons.star_rate_rounded),
-                text: 'Favourites',
-              ),
-            ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(pages[selectedPage]['title'] as String),
+      ),
+      body: pages[selectedPage]['page'] as Widget,
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: selectPage,
+        backgroundColor: Theme.of(context).primaryColor,
+        selectedItemColor: Theme.of(context).accentColor,
+        unselectedItemColor: Colors.white,
+        currentIndex: selectedPage,
+        type: BottomNavigationBarType.shifting,
+        items: [
+          BottomNavigationBarItem(
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.category_sharp),
+            label: 'Categories',
           ),
-        ),
-        body: TabBarView(
-          children: <Widget>[
-            CategoriesScreen(),
-            FavouritesScreen(),
-          ],
-        ),
+          BottomNavigationBarItem(
+            backgroundColor: Theme.of(context).primaryColor,
+            icon: Icon(Icons.star_rate_rounded),
+            label: 'Favourites',
+          ),
+        ],
       ),
     );
   }
